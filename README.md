@@ -1,1 +1,1 @@
-# ElectronicsCalculatorVX4
+# Electronics Calculator for the Casio VX4
