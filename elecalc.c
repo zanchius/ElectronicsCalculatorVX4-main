@@ -44,8 +44,8 @@ int main()
 
 int basicelec()
 {
-    float ohm, volt, amp, watt;
-    int choice;
+    float ohm, volt, amp, watt, res[100];
+    int choice, input, i;
 
     printf("Chose option:\n");
     printf("1)Ohm 2)Volt 3)Amp 4)Watt\n");
@@ -94,7 +94,14 @@ int basicelec()
     }
     else if(choice == 5)
     {
-
+        printf("Enter resistors values (spc to stop): ");
+        scanf("%d",&input);
+        i=0;
+        do
+        {
+            res[i] = input;
+        } while (input != 32);
+        
     }
     else if(choice == 6)
     {
