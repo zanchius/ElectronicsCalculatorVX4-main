@@ -1,3 +1,5 @@
+//typedef long long int ll; 
+
 int main()
 {
     int sp;
@@ -14,7 +16,7 @@ int main()
     if(sp == 32)
     {
         printf("Choose the section:\n");
-        printf("1)Basic Elec, 2)Electromag\n");
+        printf("1)Basic Elec  2)Electromag\n");
         printf("3)LCR         4)RF")
 
         scanf("%d",&ch);
@@ -95,13 +97,15 @@ int basicelec()
     else if(choice == 5)
     {
         printf("Enter resistors values (spc to stop): ");
-        scanf("%d",&input);
         i=0;
         do
         {
+            scanf("%d",&input);
             res[i] = input;
+            i++;
         } while (input != 32);
-        
+        int n = sizeof(res) / sizeof(res[0]); 
+	    printf("Parallel resistor value is: %l\n", findlcm(res, n)); 
     }
     else if(choice == 6)
     {
@@ -141,14 +145,26 @@ int rf()
 
 }
 
-long gcd(long int a, long int b)
-{
-  if (b == 0)
-    return a;
-  return gcd(b, a % b);
-}
+// Utility function to find 
+// GCD of 'a' and 'b' 
+int gcd(int a, int b) 
+{ 
+	if (b == 0) 
+		return a; 
+	return gcd(b, a % b); 
+} 
 
-long lcm(int a, int b)
-{
-    return (a / gcd(a, b)) * b;
+// Returns LCM of array elements 
+long findlcm(int arr[], int n) 
+{ 
+	// Initialize result 
+	long ans = arr[0]; 
+
+	// ans contains LCM of arr[0], ..arr[i] 
+	// after i'th iteration, 
+	for (int i = 1; i < n; i++) 
+		ans = (((arr[i] * ans)) / 
+				(gcd(arr[i], ans))); 
+
+	return ans; 
 }
