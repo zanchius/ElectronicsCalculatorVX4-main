@@ -1,5 +1,3 @@
-//typedef long long int ll; 
-
 int main()
 {
     int sp;
@@ -17,7 +15,7 @@ int main()
     {
         printf("Choose the section:\n");
         printf("1)Basic Elec  2)Electromag\n");
-        printf("3)LCR         4)RF")
+        printf("3)LCR         4)RF\n");
 
         scanf("%d",&ch);
         if(ch == 1)
@@ -46,7 +44,7 @@ int main()
 
 int basicelec()
 {
-    float ohm, volt, amp, watt, res[100];
+    float ohm, volt, amp, watt, res[50];
     int choice, input, i;
 
     printf("Chose option:\n");
@@ -104,20 +102,20 @@ int basicelec()
             res[i] = input;
             i++;
         } while (input != 32);
-        int n = sizeof(res) / sizeof(res[0]); 
-	    printf("Parallel resistor value is: %l\n", findlcm(res, n)); 
+        int n = sizeof(res) / sizeof(res[0]);
+	printf("Parallel resistor value is: %l\n", findlcm(res, n));
     }
     else if(choice == 6)
     {
-        
+
     }
     else if(choice == 7)
     {
-        
+
     }
     else if(choice == 8)
     {
-        
+
     }
 
 
@@ -145,26 +143,22 @@ int rf()
 
 }
 
-// Utility function to find 
-// GCD of 'a' and 'b' 
-int gcd(int a, int b) 
-{ 
-	if (b == 0) 
-		return a; 
-	return gcd(b, a % b); 
-} 
+int gcd(int a, int b)
+{
+	if (b == 0)
+	{
+		return a;
+	}
+	return gcd(b, a % b);
+}
 
-// Returns LCM of array elements 
-long findlcm(int arr[], int n) 
-{ 
-	// Initialize result 
-	long ans = arr[0]; 
+long findlcm(int arr[], int n)
+{
+	long ans = arr[0];
 
-	// ans contains LCM of arr[0], ..arr[i] 
-	// after i'th iteration, 
-	for (int i = 1; i < n; i++) 
-		ans = (((arr[i] * ans)) / 
-				(gcd(arr[i], ans))); 
-
-	return ans; 
+	for (int i = 1; i < n; i++)
+	{
+		ans = (((arr[i] * ans)) / (gcd(arr[i], ans)));
+	}
+	return ans;
 }
